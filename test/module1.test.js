@@ -251,15 +251,15 @@ describe('Shopping Master game - Define object-types/classes', function () {
     describe("Call dateDiff() function inside the getter of daysToExpire property of Product", () => {
 
         it('Should call and return the dateDiff function in the getter of daysToExpire. @dateDiff-in-get', function () {
-
             test.assert(shoppinggame.Product, "Have you defined a `Product` object type?");
 
             const pr = new shoppinggame.Product(1, 'test', 100, oneYearLater);
-
+            
+            
+            
             const thisUsed = (daysToExpireCall && daysToExpireCall.argument.arguments[0].object &&
                 daysToExpireCall.argument.arguments[0].object.type === "ThisExpression") ? true : false;
             const newUsed = (daysToExpireCall && daysToExpireCall.argument.arguments[1].type === "NewExpression") ? true : false;
-
 
             test.assert(thisUsed && newUsed && pr.daysToExpire >= 0
                 , "Have you called the `dateDiff()` function inside the getter with an: arg1: `this.expiryDate` & arg2: `new Date()`?");
@@ -384,7 +384,7 @@ describe('Shopping Master game - Define object-types/classes', function () {
     describe("Define Rating class", () => {
 
         it('Should define a class named Rating. @Rating-class', function () {
-
+            
             test.assert(fieldDeclInRatingCls == false, "Have you done a Field declaration in the class body? It is an experimental feature according to MDN docs and we suggest you remove it.");
 
             test.assert(ratingClassDecl, "Have you defined a class named `Rating` using the `class` keyword?");
@@ -421,7 +421,7 @@ describe('Shopping Master game - Define object-types/classes', function () {
             }
 
             for (let i = 0; i < classBody.length; i++) {
-
+                
                 if (classBody[i] &&
                     classBody[i].kind == 'set' &&
                     classBody[i].key.name == 'rating' &&
@@ -435,8 +435,6 @@ describe('Shopping Master game - Define object-types/classes', function () {
 
             test.assert(constructorDefined, "Have you added a constructor that initializes a property named `rate` to a default value?");
 
-
-            //console.log(setterDefined);
             test.assert(setterDefined, "Have you added a setter that sets the value of a property named `rate`?");
 
             // let r = new shoppinggame.Rating();

@@ -45,7 +45,7 @@ describe('Shopping Master game - Implement the shopping functionality', function
         it('Should set the `product` variable to the located product by calling `getProduct()` function if `lastProd` parameter value is `undefined` (use `Object.is()` method to check) if not set it to `lastProd` in the `shop()` function. @set-product', function () {
 
             const hasConditionalExpression = shopFuncNode.init.body.body[2].declarations[0].init.type == 'ConditionalExpression' ? true : false;
-
+            
             test.assert(hasConditionalExpression, "Have you used conditional (ternary) operator for the expression?")
 
             const objectIsUsed = ((shopFuncNode.init.body.body[2].declarations[0].init.test &&
@@ -65,6 +65,7 @@ describe('Shopping Master game - Implement the shopping functionality', function
                     shopFuncNode.init.body.body[2].declarations[0].init.test.argument.arguments[0].name == 'lastProd' &&
                     shopFuncNode.init.body.body[2].declarations[0].init.test.argument.arguments[1].name == 'undefined')) ? true : false;
 
+            
             test.assert(objectIsUsed, "Have you used `Object.is()` method to check the condition (if `lastProd` is `undefined`)?");
 
 
@@ -79,7 +80,8 @@ describe('Shopping Master game - Implement the shopping functionality', function
                 (shopFuncNode.init.body.body[2].declarations[0].init.consequent &&
                     shopFuncNode.init.body.body[2].declarations[0].init.consequent.type == 'Identifier' &&
                     shopFuncNode.init.body.body[2].declarations[0].init.consequent.name == 'lastProd')) ? true : false;
-
+            
+            
             test.assert(isConsequentCorrect, "Have you called `getProduct()` function with parameters `prodList` followed by `prId` if the condition is truthy?");
 
             const isAlternateCorrect = ((shopFuncNode.init.body.body[2].declarations[0].init.alternate &&
@@ -95,6 +97,7 @@ describe('Shopping Master game - Implement the shopping functionality', function
                     shopFuncNode.init.body.body[2].declarations[0].init.alternate.arguments[1].name == 'prId')) ? true : false;
 
 
+            
             test.assert(isAlternateCorrect, "Have you put `lastProd` as the expression to execute if the condition is falsy?");
 
         });
